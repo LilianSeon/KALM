@@ -1,0 +1,10 @@
+staging:
+  type: deploy
+  image: ruby:latest
+  script:
+    - apt-get update
+    - apt-get install -yqq ruby ruby-dev node.js --silent
+    - gem install dpl
+    - dpl --provider=heroku --app=hitemajs --api-key=$HEROKU_API_KEY
+  only:
+    - master
