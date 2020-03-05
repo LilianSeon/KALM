@@ -16,6 +16,9 @@ class UserController{
 
             
             let user = await User.create({
+                prenom: req.body.prenom,
+                nom: req.body.nom,
+                image: req.body.image,
                 email: req.body.email,
                 password: req.body.password,
                 user_role: req.body.user_role

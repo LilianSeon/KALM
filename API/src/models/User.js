@@ -3,6 +3,18 @@ import mongoose from 'mongoose';
 //Création du schema
 const userSchema = new mongoose.Schema({
 
+    prenom:{
+        type: String,
+        required: true
+    },
+    nom:{
+        type: String,
+        required: true
+    },
+    image:{
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -14,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     user_role:{
         type: Number,
-        default: 0
+        default: 1
     }
 });
 
