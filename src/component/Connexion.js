@@ -51,6 +51,7 @@ class Connexion extends Component{
 
                             localStorage.setItem('idUser', JSON.stringify(user._id));
                             localStorage.setItem('prenom', JSON.stringify(user.prenom));
+                            localStorage.setItem('email', JSON.stringify(user.email));
                             localStorage.setItem('nom', JSON.stringify(user.nom));
                             localStorage.setItem('image', JSON.stringify(user.image));
                             localStorage.setItem('user_role', JSON.stringify(user.user_role));
@@ -79,7 +80,7 @@ class Connexion extends Component{
     redirect(){
         if(this.state.isAuth){
             return(
-                <Redirect to={'/'}/>
+                <Redirect to={'/accueil'}/>
             )
         }
     }
