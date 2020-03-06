@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import { Link} from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Menu from './Menu';
 import Footer from './Footer';
+import UserService from '../service/user.service';
+import Materialize from "materialize-css";
 import '../css/Home.css';
 
 class Connexion extends Component{
@@ -11,9 +13,6 @@ class Connexion extends Component{
         this.state = {
             email: "",
             password: "",
-            prenom: "",
-            nom: "",
-            age: "",
             user_role: 0,
             bddUser: {},
             id: '',
@@ -33,11 +32,64 @@ class Connexion extends Component{
         });
     }
 
+    async checkUser(e){ // Envoie de la requête pour ajouter un utilisateur en base de donnée
+        e.preventDefault();
+        let response = await UserService.list(); // Retourne la liste de tous les users
+            if(response.ok){
+                let data = await response.json();
+                this.setState({bddUser: data});
+                this.state.bddUser.users.map((user) => {
+                    if(user.email === this.state.email){
+                        if(user.password === this.state.password){
+                            console.log("Connexion");
+                            this.setState({
+                                ...this.state,
+                                id: user._id,
+                                user_role: user.user_role,
+                                isAuth: true
+                            });
+
+                            localStorage.setItem('idUser', JSON.stringify(user._id));
+                            localStorage.setItem('prenom', JSON.stringify(user.prenom));
+                            localStorage.setItem('nom', JSON.stringify(user.nom));
+                            localStorage.setItem('image', JSON.stringify(user.image));
+                            localStorage.setItem('user_role', JSON.stringify(user.user_role));
+                            localStorage.setItem('isAuth', JSON.stringify(true));
+                            localStorage.setItem('toast', JSON.stringify(true));
+
+                            if(localStorage.user_role === "1"){
+                                Materialize.toast({html: '<span>Vous êtes connecté !</span>'})
+                            }
+
+                            return true;
+                        }else{
+                            Materialize.toast({html: '<span>Mot de passe incorrect</span>'})
+                            return false;
+                        }
+                    }else{
+                        Materialize.toast({html: '<span>Utilisateur inconnu</span>'})
+                        return false;
+                    }
+                })
+            }else{
+                console.log(response);
+            }
+    }
+
+    redirect(){
+        if(this.state.isAuth){
+            return(
+                <Redirect to={'/'}/>
+            )
+        }
+    }
+
 
     render(){
         return(
             <div>
                 <Menu/>
+                {this.redirect()}
                 <br/> <br/> <br/>
                 <div className="row m3">
                     <div className="col s0 m3 l4"></div>
