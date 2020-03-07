@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Menu from './Menu';
+import Map from './Map';
 import Footer from './Footer';
 import Materialize from "materialize-css";
 import { SideNav, SideNavItem, Button } from 'react-materialize';
@@ -19,6 +19,9 @@ class Home2 extends Component{
         return(
             <div>
                 <Sidebar/>
+                <div style={{ height: '100vh', width: '100%'}}>
+                    <Map/>
+                </div>
             </div>
         )
     }
