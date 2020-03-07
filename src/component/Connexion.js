@@ -49,6 +49,7 @@ class Connexion extends Component{
                                 isAuth: true
                             });
 
+                            console.log(user);
                             localStorage.setItem('idUser', JSON.stringify(user._id));
                             localStorage.setItem('prenom', JSON.stringify(user.prenom));
                             localStorage.setItem('email', JSON.stringify(user.email));
@@ -57,6 +58,8 @@ class Connexion extends Component{
                             localStorage.setItem('user_role', JSON.stringify(user.user_role));
                             localStorage.setItem('isAuth', JSON.stringify(true));
                             localStorage.setItem('toast', JSON.stringify(true));
+
+                            window.location.replace("http://localhost:3000/accueil");
 
                             if(localStorage.user_role === "1"){
                                 Materialize.toast({html: '<span>Vous êtes connecté !</span>'})
@@ -77,20 +80,11 @@ class Connexion extends Component{
             }
     }
 
-    redirect(){
-        if(this.state.isAuth){
-            return(
-                <Redirect to={'/accueil'}/>
-            )
-        }
-    }
-
 
     render(){
         return(
             <div>
                 <Menu/>
-                {this.redirect()}
                 <br/> <br/> <br/>
                 <div className="row m3">
                     <div className="col s0 m3 l4"></div>
