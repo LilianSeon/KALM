@@ -17,6 +17,8 @@ class Map extends Component{
             zoom: 12
         };
         
+        let elems = document.querySelectorAll('.tooltipped');
+        Materialize.Tooltip.init(elems,{});
     }
 
     componentDidMount(){
@@ -50,11 +52,14 @@ class Map extends Component{
                 center={this.state.center}
                 defaultZoom={this.state.zoom}
                 >            
-                <i 
-                className="material-icons"
+                <img
+                className="material-icons circle"
+                width="45"
+                height="45"
+                src={JSON.parse(localStorage.image)}
                 lat={this.state.userLatitude}
                 lng={this.state.userLongitude}
-                >location_on</i>
+                />
             </GoogleMapReact>
         )
     }

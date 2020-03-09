@@ -29,21 +29,34 @@ class Sidebar extends Component{
                     href="#!icon"
                     icon="map"
                     >
-                    Map
+                    Trouver ma salle
                     </SideNavItem>
-                    <SideNavItem href="#!second" icon="local_dining">
-                    Recette
-                    </SideNavItem>
-                    <SideNavItem divider />
-                    <SideNavItem subheader>
-                    Subheader
+                    <SideNavItem href="#!second" icon="gps_fixed">
+                    Fixer mes objectifs
                     </SideNavItem>
                     <SideNavItem
                     href="#!third"
+                    icon="equalizer"
                     waves
                     >
-                    Third Link With Waves
+                    Mon évolution
                     </SideNavItem>
+                    <SideNavItem divider />
+                    <SideNavItem
+                    href="#!third"
+                    icon="person"
+                    waves
+                    >
+                    Mon profil
+                    </SideNavItem>
+                    <Link to={'/'}>
+                        <SideNavItem
+                        icon="home"
+                        waves
+                        >
+                        Accueil
+                        </SideNavItem>
+                    </Link>
                 </SideNav>
             </div>
         )

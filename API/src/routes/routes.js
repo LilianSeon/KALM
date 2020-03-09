@@ -2,7 +2,7 @@ import { Router } from 'express';
 import UserController from '../controllers/users.controller';
 import ArticleController from '../controllers/articles.controller';
 import CommentController from '../controllers/comments.controller'
-import FilmController from '../controllers/film.controller'
+import SalleController from '../controllers/salle.controller'
 import Auth from './../config/auth';
 
 const router = Router();
@@ -54,13 +54,10 @@ router.delete('/comments/:id', CommentController.delete);
 router.put('/comments/:id', CommentController.update);
 
 
-// Film
+// Salle
 
-router.post('/film', FilmController.create);
-router.get('/film', FilmController.list);
-router.get('/film/:id', FilmController.details);
-router.put('/film/:id', FilmController.update);
-router.delete('/film/:id', FilmController.delete);
+router.post('/salle', SalleController.create);
+
 
 
 export default router;

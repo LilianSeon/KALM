@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Materialize from "materialize-css/dist/js/materialize.js";
 
 class Menu extends Component{
 
@@ -18,10 +17,7 @@ class Menu extends Component{
                 <div className="nav-wrapper container">
                     <Link id="logo-container" to={'/'} className="brand-logo">KALM</Link>
                     <ul className="right hide-on-med-and-down">
-                        <li><Link to={''}>Menu 1</Link></li>
-                    </ul>
-                    <ul id="nav-mobile" className="sidenav">
-                        <li><Link to={''}>Menu 2</Link></li>
+                        <li><Link to={'/inscription'}>Inscription</Link></li>
                     </ul>
                     <Link to={''} data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
                 </div>
