@@ -42,7 +42,7 @@ class Map extends Component{
             timeout: 6000,
             maximumAge: 0})
 
-            let response = await SalleService.list(); // Ajoute un user
+            let response = await SalleService.list(); // Avoir la liste des salles
             if(response.ok){
                 let data = await response.json();
                 this.setState({salles: data.salles});
@@ -71,7 +71,7 @@ class Map extends Component{
                 defaultZoom={this.state.zoom}
                 >            
                 <img
-                className="material-icons circle"
+                className="material-icons circle z-depth-3"
                 width="45"
                 height="45"
                 alt=""

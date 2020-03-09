@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Materialize from "materialize-css";
-import { SideNav, SideNavItem, Button } from 'react-materialize';
+import { SideNav, SideNavItem} from 'react-materialize';
 
 class Sidebar extends Component{
 
@@ -15,7 +15,11 @@ class Sidebar extends Component{
     render(){
         return(
             <div>
-                <SideNav>
+                <SideNav
+                options={{
+                    closeOnClick: true
+                  }}
+                  >
                     <SideNavItem
                     user={{
                         background: 'https://placeimg.com/640/480/tech',
@@ -41,6 +45,14 @@ class Sidebar extends Component{
                     >
                     Mon évolution
                     </SideNavItem>
+                    <Link to={'/'}>
+                        <SideNavItem
+                        icon="local_dining"
+                        waves
+                        >
+                        Mes recettes
+                        </SideNavItem>
+                    </Link>
                     <SideNavItem divider />
                     <SideNavItem
                     href="#!third"
