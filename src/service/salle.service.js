@@ -10,7 +10,7 @@ class SalleService{
                 //"Authorization": `Bearer ${localStorage.getItem('token')}`
             }
         }
-        let call = await fetch(`${baseUrl}/users`, init);
+        let call = await fetch(`${baseUrl}/salle`, init);
         return call;
 
     }
@@ -36,7 +36,7 @@ class SalleService{
             },
             body: JSON.stringify(bodyFilm)
         }
-        let call = await fetch(`${baseUrl}/film/${id}`, init);
+        let call = await fetch(`${baseUrl}/salle/${id}`, init);
         return call;
     }
 
@@ -60,7 +60,7 @@ class SalleService{
                 //"Authorization": `Bearer ${localStorage.getItem('token')}`
             }
         }
-        let call = await fetch(`${baseUrl}/users/${id}`, init);
+        let call = await fetch(`${baseUrl}/salle/${id}`, init);
         return call;
     }
 

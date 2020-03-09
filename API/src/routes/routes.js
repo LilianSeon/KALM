@@ -58,6 +58,8 @@ router.put('/comments/:id', CommentController.update);
 
 router.post('/salle', SalleController.create);
 
+router.get('/salle', SalleController.list);
+
 
 
 export default router;

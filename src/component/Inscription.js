@@ -301,7 +301,7 @@ class Inscription extends Component{
                         <div className="input-field col s10">
                             <i className="material-icons prefix">link</i>
                             <input id="urlSalle" type="text" className="validate" onChange={(e) => {this.getURLSalle(e)}}/>
-                            <label htmlFor="urlSalle">URL</label>
+                            <label htmlFor="urlSalle">Site web</label>
                         </div>
                     </div>
                     <div className="row">

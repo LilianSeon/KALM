@@ -28,7 +28,7 @@ class UserController{
 
             body = {
                 salle, 
-                'message': 'User created'
+                'message': 'Salle created'
             };
             
         } catch (error) {
@@ -49,11 +49,11 @@ class UserController{
             // .findById(id)
             // .findOne({email: 'email@email.fr'})
             
-            let users = await User.find();
+            let salles = await Salle.find();
 
             body = {
-                users, 
-                'message': 'Users list'
+                salles, 
+                'message': 'Salles list'
             };
         } catch (error) {
             status = 500;
