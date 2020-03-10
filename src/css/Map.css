@@ -1,0 +1,10 @@
+.searchBar{
+    position: fixed;
+    height: 55px;
+    top:10px;
+    left: 30% !important;
+    z-index: 999;
+    background-color: #FFF;
+    opacity: 0.9;
+    margin: 0 auto;
+}
