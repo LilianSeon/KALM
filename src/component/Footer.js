@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Materialize from "materialize-css/dist/js/materialize.js";
 
 class Footer extends Component{
 
@@ -43,7 +42,7 @@ class Footer extends Component{
             </div>
             <div className="footer-copyright">
               <div className="container">
-              Made by KALM 2020
+              Made by KALM - 2020
               </div>
             </div>
           </footer>

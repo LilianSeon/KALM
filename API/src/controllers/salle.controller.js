@@ -23,7 +23,9 @@ class UserController{
                 latitude: req.body.latitude,
                 longitude: req.body.longitude,
                 type: req.body.type,
-                url: req.body.url
+                url: req.body.url,
+                ouverture: req.body.ouverture,
+                fermeture: req.body.fermeture
             });
 
             body = {

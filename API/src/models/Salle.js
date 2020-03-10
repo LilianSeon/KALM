@@ -35,6 +35,15 @@ const salleSchema = new mongoose.Schema({
     type:{
         type: Number,
         default: 0
+    },
+    ouverture:{
+        type: String,
+    },
+    fermeture:{
+        type: String,
+    },
+    note:{
+        type: Number,
     }
 });
 

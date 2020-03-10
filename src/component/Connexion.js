@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Menu from './Menu';
 import Footer from './Footer';
 import UserService from '../service/user.service';

@@ -69,6 +69,7 @@ class Map extends Component{
                 bootstrapURLKeys={{ key: 'AIzaSyC1DDVW3qtV4y7dZm2iKN2ecQPfw7wS0go'}}
                 center={this.state.center}
                 defaultZoom={this.state.zoom}
+                style={{ height: '100vh', width: '100%'}}
                 >            
                 <img
                 className="material-icons circle z-depth-3"

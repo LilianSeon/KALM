@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Materialize from "materialize-css";
 import { SideNav, SideNavItem} from 'react-materialize';
 
 class Sidebar extends Component{
@@ -10,6 +9,10 @@ class Sidebar extends Component{
         this.state = {
 
         };
+    }
+
+    disconnect(){
+        localStorage.clear();
     }
 
     render(){
@@ -67,6 +70,15 @@ class Sidebar extends Component{
                         waves
                         >
                         Accueil
+                        </SideNavItem>
+                    </Link>
+                    <Link to={'/'}>
+                        <SideNavItem
+                        icon="exit_to_app"
+                        onClick={() => {this.disconnect()}}
+                        waves
+                        >
+                        Déconnexion
                         </SideNavItem>
                     </Link>
                 </SideNav>

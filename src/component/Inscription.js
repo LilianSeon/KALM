@@ -4,7 +4,7 @@ import Footer from '../component/Footer';
 import UserService from '../service/user.service';
 import SalleService from '../service/salle.service';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab } from 'react-materialize';
+import { Tabs, Tab, TimePicker } from 'react-materialize';
 import Materialize from "materialize-css";
 
 class Inscription extends Component{
@@ -28,7 +28,9 @@ class Inscription extends Component{
                 longitude: "",
                 url: "",
                 image: "",
-                type: 0
+                type: 0,
+                ouverture: "",
+                fermeture: ""
             }
         };
     }
@@ -309,6 +311,58 @@ class Inscription extends Component{
                             <i className="material-icons prefix">image</i>
                             <input id="imageSalle" type="text" className="validate" onChange={(e) => {this.getImageSalle(e)}}/>
                             <label htmlFor="imageSalle">Image</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s5">
+                            <TimePicker
+                                options={{
+                                    autoClose: false,
+                                    container: null,
+                                    defaultTime: 'now',
+                                    duration: 350,
+                                    fromNow: 0,
+                                    i18n: {
+                                        cancel: 'Annuler',
+                                        clear: 'Clear',
+                                        done: 'Ok'
+                                    },
+                                    onCloseEnd: null,
+                                    onCloseStart: null,
+                                    onOpenEnd: null,
+                                    onOpenStart: null,
+                                    onSelect: (heure, minute) => {if(heure < 10){heure='0'+heure}if(minute < 10){minute='0'+minute}this.setState({salle:{...this.state.salle,ouverture: ''+heure+':'+minute+''}})},
+                                    showClearBtn: false,
+                                    twelveHour: false,
+                                    vibrate: true
+                                }}
+                            />
+                            <label>Ouverture</label>
+                        </div>
+                        <div className="input-field col s5">
+                            <TimePicker
+                                options={{
+                                    autoClose: false,
+                                    container: null,
+                                    defaultTime: 'now',
+                                    duration: 350,
+                                    fromNow: 0,
+                                    i18n: {
+                                        cancel: 'Annuler',
+                                        clear: 'Clear',
+                                        done: 'Ok'
+                                    },
+                                    onCloseEnd: null,
+                                    onCloseStart: null,
+                                    onOpenEnd: null,
+                                    onOpenStart: null,
+                                    onSelect: (heure, minute) => {if(heure < 10){heure='0'+heure}if(minute < 10){minute='0'+minute}this.setState({salle:{...this.state.salle,fermeture: ''+heure+':'+minute+''}})},
+                                    showClearBtn: false,
+                                    twelveHour: false,
+                                    vibrate: true
+                                }}
+                            />
+                            <label>Fermeture</label>
                         </div>
                     </div>
                     <div className="row">

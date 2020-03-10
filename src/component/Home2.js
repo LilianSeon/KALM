@@ -16,7 +16,7 @@ class Home2 extends Component{
         return(
             <div>
                 <Sidebar/>
-                <div style={{ height: '100vh', width: '100%'}}>
+                <div className="col s6">
                     <Map/>
                 </div>
                 <RightSideBar/>
