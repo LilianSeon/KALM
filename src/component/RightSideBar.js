@@ -28,11 +28,12 @@ class RightSideBar extends Component{
 
     render(){
         return(
-            <div className="sidenav-fixed RightSideBar">
+            <div className="sidenav-fixed RightSideBar grey lighten-5">
                 <div className="s12">
                     <div className="col s12 m7">
-                        <h5 className="header center-align">Les salles de sport</h5>
-                        <br/>
+                        <p>
+                            <h5 className="header center-align">Les salles de sport</h5>
+                        </p>
                         <div className="divider"></div>
                         <br/>
                         {

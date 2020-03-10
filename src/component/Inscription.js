@@ -184,13 +184,13 @@ class Inscription extends Component{
 
       render(){
         return(
-            <div>
+            <div className="blue-grey lighten-5">
                 <Menu/>
                 <br/>
                 <div className="container">
                 <Link to={'/connexion'} className="waves-effect waves-light btn"><i className="material-icons left">keyboard_arrow_left</i>Retour</Link>
                 <br/><br/>
-                <Tabs className="">
+                <Tabs className="blue-grey lighten-5 center-align">
                 <Tab
                     active
                     options={{
@@ -204,7 +204,7 @@ class Inscription extends Component{
                     <br/>
                     <div className="row m3">
                         <div className="col s3"></div>
-                        <form className="col s6 z-depth-3" style={{paddingLeft:'45px'}}>
+                        <form className="col s6 z-depth-3 white" style={{paddingLeft:'45px'}}>
                         <h4 className="center" style={{paddingRight:'45px'}}>Inscription d'un particulier</h4>
                         <div className="row">
                             <div className="input-field col s5">
@@ -264,7 +264,7 @@ class Inscription extends Component{
                  <br/>
                 <div className="row m3">
                     <div className="col s3"></div>
-                    <form className="col s6 z-depth-3" style={{paddingLeft:'45px'}}>
+                    <form className="col s6 z-depth-3 white" style={{paddingLeft:'45px'}}>
                     <h4 className="center" style={{paddingRight:'45px'}}>Inscription pour une salle de sport</h4>
                     <div className="row">
                         <div className="input-field col s10">
@@ -367,10 +367,10 @@ class Inscription extends Component{
                     </div>
                     <div className="row">
                         <div className="input-field col s10">
-                        <label>
-                            <input type="checkbox" onChange={(e) => {this.getTypeSalle(e) }}/>
-                            <span>Salle écologique</span>
-                        </label>
+                            <label>
+                                <input type="checkbox" onChange={(e) => {this.getTypeSalle(e) }}/>
+                                <span>Salle écologique</span>
+                            </label>
                         </div>
                     </div>
                     <div className="row">

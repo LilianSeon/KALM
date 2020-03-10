@@ -12,7 +12,14 @@ class Sidebar extends Component{
     }
 
     disconnect(){
-        localStorage.clear();
+        localStorage.removeItem('idUser');
+        localStorage.removeItem('prenom');
+        localStorage.removeItem('email');
+        localStorage.removeItem('nom');
+        localStorage.removeItem('image');
+        localStorage.removeItem('user_role');
+        localStorage.removeItem('isAuth');
+        localStorage.removeItem('toast');
     }
 
     render(){

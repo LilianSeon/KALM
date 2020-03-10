@@ -20,6 +20,15 @@ class Connexion extends Component{
         };
     }
 
+    componentDidMount(){
+        if (localStorage.resterco === "true") {
+            document.getElementById("resterco").checked = true;
+            this.setState({
+                email: document.getElementById('email').value
+            })
+        }
+    }
+
     getEmail(e){ // Récupère l'email de l'utilisateur pour le mettre dans le state
         this.setState({
             email: e.target.value
@@ -80,32 +89,45 @@ class Connexion extends Component{
     }
 
 
+    ResterCo(e){
+        if(e.target.checked){ // checked
+            localStorage.setItem('resterco', true);
+        }else{ 
+            localStorage.setItem('resterco', false);
+        }
+    }
+
+
     render(){
         return(
-            <div>
+            <div className="blue-grey lighten-5">
                 <Menu/>
-                <br/> <br/> <br/>
                 <div className="row m3">
+                <br/> <br/> <br/>
                     <div className="col s0 m3 l4"></div>
                     <form className="col s12 m6 l4 z-depth-3 white" style={{paddingLeft:'45px'}}>
                     <h4 className="center" style={{paddingRight:'45px'}}>Connexion</h4>
                     <div className="row">
                         <div className="input-field col s11 m10">
                             <i className="material-icons prefix">account_circle</i>
-                            <input id="icon_prefix" type="email" className="validate" onChange={(e) => {this.getEmail(e)}}/>
-                            <label htmlFor="icon_prefix">Email</label>
+                            <input id="email" type="email" className="validate" onChange={(e) => {this.getEmail(e)}} value={(localStorage.isAuth === "true" && localStorage.resterco === "true") ? JSON.parse(localStorage.email) : null }/>
+                            <label htmlFor="email">Email</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s11 m10">
                             <i className="material-icons prefix">lock</i>
-                            <input id="icon_telephone" type="password" className="validate" onChange={(e) => {this.getPassword(e)}}/>
-                            <label htmlFor="icon_telephone">Mot de passe</label>
+                            <input id="mdp" type="password" className="validate" onChange={(e) => {this.getPassword(e)}}/>
+                            <label htmlFor="mdp">Mot de passe</label>
                             <span className="helper-text">Pas encore inscrit ? <Link to={'/inscription'}>Enregistre toi.</Link></span>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col s6">
+                            <label>
+                                <input id="resterco" type="checkbox" onChange={(e) => {this.ResterCo(e) }}/>
+                                <span>Se souvenir de moi</span>
+                            </label>
                         </div>
                         <div className="col s6">
                             <button className="waves-effect waves-light btn blue" onClick={(e) => {this.checkUser(e)}}><i className="material-icons left">check</i>Connexion</button>
