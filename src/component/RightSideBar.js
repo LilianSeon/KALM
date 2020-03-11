@@ -36,38 +36,40 @@ class RightSideBar extends Component{
                         </p>
                         <div className="divider"></div>
                         <br/>
-                        {
-                            this.state.salles.map((salle) =>{
-                                return(
-                                    <div key={salle._id} className="card horizontal hoverable">
-                                        <div className="card-image">
-                                            <img alt="" width="118" height="118" src={salle.image}/>
-                                        </div>
-                                        <div className="card-stacked">
-                                            <div>
-                                                <h6 className="blue-grey-text text-darken-2 center-align"><b>{salle.nom}</b></h6>
-                                                <div className="center-align">
-                                                    <StarRatings
-                                                        rating={4.5}
-                                                        starRatedColor="#cddc39"
-                                                        numberOfStars={5}
-                                                        name='rating'
-                                                        starDimension="20px"
-                                                        starSpacing="4px"
-                                                    />
+                        <div id="result">
+                            {
+                                this.state.salles.map((salle) =>{
+                                    return(
+                                        <div key={salle._id} className="card horizontal hoverable hit">
+                                            <div className="card-image">
+                                                <img alt="" width="118" height="118" src={salle.image}/>
+                                            </div>
+                                            <div className="card-stacked">
+                                                <div>
+                                                    <h6 className="blue-grey-text text-darken-2 center-align"><b className="title">{salle.nom}</b></h6>
+                                                    <div className="center-align">
+                                                        <StarRatings
+                                                            rating={4.5}
+                                                            starRatedColor="#cddc39"
+                                                            numberOfStars={5}
+                                                            name='rating'
+                                                            starDimension="20px"
+                                                            starSpacing="4px"
+                                                        />
+                                                    </div>
+                                                    <blockquote style={{marginLeft: "5px"}}>
+                                                        {salle.ouverture} - {salle.fermeture}
+                                                    </blockquote>
                                                 </div>
-                                                <blockquote style={{marginLeft: "5px"}}>
-                                                    {salle.ouverture} - {salle.fermeture}
-                                                </blockquote>
-                                            </div>
-                                            <div className="card-action">
-                                                <Link to={'/salle-detail/'+salle._id}>En savoir plus</Link>
+                                                <div className="card-action">
+                                                    <Link to={'/salle-detail/'+salle._id}>En savoir plus</Link>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )
-                            })
-                        }
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Materialize from "materialize-css";
 import GoogleMapReact from 'google-map-react';
 import SalleService from '../service/salle.service';
 import '../css/Map.css';
@@ -17,12 +16,8 @@ class Map extends Component{
                 lng: 2.3423987813293934
               },
             zoom: 12,
-            salles: [],
-            autocomplete: {}
+            salles: []
         };
-        
-        let elems = document.querySelectorAll('.tooltipped');
-        Materialize.Tooltip.init(elems,{});
     }
 
     async componentDidMount(){
@@ -49,23 +44,11 @@ class Map extends Component{
                 let data = await response.json();
                 this.setState({
                     salles: data.salles,
-                    autocomplete: data.salles
                 });
                 console.log(this.state);
             }else{
                 console.log(response.error);
             }
-
-            var dataSalle = {}; // Remplir un obj pour l'autocomplete
-            for (var i = 0; i < this.state.salles.length; i++) {
-                dataSalle[this.state.salles[i].nom] = this.state.salles[i].image;
-            }
-
-        // Autocomplete options
-        let elems = document.querySelectorAll('.autocomplete');
-        Materialize.Autocomplete.init(elems, {
-            data: dataSalle
-        });
     }
 
     relocate(lati, long){ // recenter la carte sur le click d'une salle
@@ -82,13 +65,6 @@ class Map extends Component{
     render(){
         return(
             <div>
-                <div className="row" style={{left: '50%'}}>
-                    <div className="input-field col s4 searchBar">
-                        <i className="material-icons prefix">search</i>
-                        <input type="text" id="autocomplete-input" className="autocomplete" onKeyUp={this.search}/>
-                        <label htmlFor="autocomplete-input">Salle de sport...</label>
-                    </div>
-                </div>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyC1DDVW3qtV4y7dZm2iKN2ecQPfw7wS0go'}}
                     center={this.state.center}
@@ -107,7 +83,7 @@ class Map extends Component{
                     {
                         this.state.salles.map((salle) => {
                             return(
-                                <i className="material-icons" onClick={() => this.relocate(salle.latitude, salle.longitude)} key={salle._id} lat={salle.latitude} lng={salle.longitude}>place</i>
+                                <i className="material-icons green-text" onClick={() => this.relocate(salle.latitude, salle.longitude)} key={salle._id} lat={salle.latitude} lng={salle.longitude}>place</i>
                             )
                         })
                     }
