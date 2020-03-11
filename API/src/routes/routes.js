@@ -60,6 +60,8 @@ router.post('/salle', SalleController.create);
 
 router.get('/salle', SalleController.list);
 
+router.get('/salle/:query', SalleController.searchMap);
+
 
 
 export default router;

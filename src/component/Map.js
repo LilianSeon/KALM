@@ -16,7 +16,8 @@ class Map extends Component{
                 lng: 2.3423987813293934
               },
             zoom: 12,
-            salles: []
+            salles: [],
+            sallesBySearching: []
         };
     }
 
@@ -45,10 +46,11 @@ class Map extends Component{
                 this.setState({
                     salles: data.salles,
                 });
-                console.log(this.state);
             }else{
                 console.log(response.error);
             }
+            console.log(this.state);
+            
     }
 
     relocate(lati, long){ // recenter la carte sur le click d'une salle
@@ -61,6 +63,20 @@ class Map extends Component{
         })
     }
 
+    componentWillUpdate(){
+        console.log(this.props.search)
+    }
+
+    
+
+    reset(){
+        document.getElementById('autocomplete-input').onkeyup = () => {
+            this.setState({
+                sallesBySearching: JSON.parse(localStorage.sallesBySearching)
+            })
+            console.log(this.state.sallesBySearching);
+        };
+    }
     
     render(){
         return(
@@ -81,9 +97,15 @@ class Map extends Component{
                     lng={this.state.userLongitude}
                     />
                     {
-                        this.state.salles.map((salle) => {
+                        this.props.search.length ?
+                        this.props.search.map((salle) => {
                             return(
-                                <i className="material-icons green-text" onClick={() => this.relocate(salle.latitude, salle.longitude)} key={salle._id} lat={salle.latitude} lng={salle.longitude}>place</i>
+                                <i className="material-icons tooltipped" onClick={() => this.relocate(salle.latitude, salle.longitude)} key={salle._id} lat={salle.latitude} lng={salle.longitude}>place</i>
+                            )
+                        })
+                        : this.state.salles.map((salle) => {
+                            return(
+                                <i className="material-icons tooltipped" onClick={() => this.relocate(salle.latitude, salle.longitude)} key={salle._id} lat={salle.latitude} lng={salle.longitude}>place</i>
                             )
                         })
                     }

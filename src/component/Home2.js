@@ -11,7 +11,8 @@ class Home2 extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            salles:[]
+            salles:[],
+            sallesBySearching: []
         };
 
         let elems = document.querySelectorAll('.tooltipped');
@@ -45,8 +46,8 @@ class Home2 extends Component{
         });
     }
 
-    search() { // Recherche de film via l'input text
-        var input, filter, ul, li, a, i, txtValue;
+    async search() { // Recherche une salle via l'input text
+        var input, filter, li, a, i, txtValue;
         input = document.getElementById("autocomplete-input");
         filter = input.value.toUpperCase();
         let card = document.getElementById("result");
@@ -60,6 +61,16 @@ class Home2 extends Component{
                 li[i].style.display = "none";
             }
         }
+
+        let response = await SalleService.searchMap(document.getElementById('autocomplete-input').value); // Avoir la liste des salles en fonction de la recherche
+            if(response.ok){
+                let data = await response.json();
+                this.setState({
+                    sallesBySearching: data.salles,
+                });
+            }else{
+                console.log(response.error);
+            }
     }
 
     render(){
@@ -70,11 +81,11 @@ class Home2 extends Component{
                     <div className="row" style={{left: '50%'}}>
                         <div className="input-field col s4 searchBar">
                             <i className="material-icons prefix">search</i>
-                            <input type="text" id="autocomplete-input" className="autocomplete" onKeyUp={this.search}/>
+                            <input type="text" id="autocomplete-input" className="autocomplete" onKeyUp={this.search.bind(this)}/>
                             <label htmlFor="autocomplete-input">Salle de sport...</label>
                         </div>
                     </div>
-                    <Map/>
+                    <Map search={this.state.sallesBySearching}/>
                 </div>
                 <RightSideBar/>
             </div>

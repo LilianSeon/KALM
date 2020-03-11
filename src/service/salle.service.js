@@ -64,6 +64,18 @@ class SalleService{
         return call;
     }
 
+    static async searchMap(query){
+        let init = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                //"Authorization": `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+        let call = await fetch(`${baseUrl}/salle/${query}`, init);
+        return call;
+    }
+
 
 }
 

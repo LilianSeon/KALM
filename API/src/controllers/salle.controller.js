@@ -45,6 +45,7 @@ class UserController{
         let status = 200;
         let body = {};
 
+
         try {            
             
             // .find() return tous
@@ -56,6 +57,31 @@ class UserController{
             body = {
                 salles, 
                 'message': 'Salles list'
+            };
+        } catch (error) {
+            status = 500;
+            body = {'message': error.message};
+        }
+        return res.status(status).json(body);
+    }
+
+    static async searchMap(req, res){
+        let status = 200;
+        let body = {};
+
+        let query = req.params.query
+
+        try {            
+            
+            // .find() return tous
+            // .findById(id)
+            // .findOne({email: 'email@email.fr'})
+            
+            let salles = await Salle.find({"nom": {'$regex': query, '$options' : 'i'}});
+
+            body = {
+                salles, 
+                'message': 'Salles list Search Map'
             };
         } catch (error) {
             status = 500;

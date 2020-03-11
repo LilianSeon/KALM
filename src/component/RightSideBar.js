@@ -20,7 +20,6 @@ class RightSideBar extends Component{
         if(response.ok){
             let data = await response.json();
             this.setState({salles: data.salles});
-            console.log(this.state);
         }else{
             console.log(response.error);
         }
