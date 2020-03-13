@@ -19,10 +19,11 @@ class CommentController{
             let comment = await Comment.create({
                 date: req.body.date,
                 content: req.body.content,
-                filmId: req.body.filmId,
+                nom:req.body.nom,
+                image:req.body.image,
+                salleId: req.body.salleId,
                 userId: req.body.userId
             });
-            console.log(comment)
 
             body = {
                 comment, 
@@ -49,7 +50,7 @@ class CommentController{
 
 
             let id = req.params.id;
-            let comments = await Comment.find({filmId: id});
+            let comments = await Comment.find({salleId: id});
 
             body = {
                 comments, 

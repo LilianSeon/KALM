@@ -10,7 +10,13 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    filmId:{
+    nom:{
+        type: String
+    },
+    image:{
+        type: String
+    },
+    salleId:{
         type: mongoose.Schema.Types.ObjectId
     },
     userId:{
