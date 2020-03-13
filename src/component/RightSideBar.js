@@ -41,7 +41,7 @@ class RightSideBar extends Component{
                                     return(
                                         <div key={salle._id} className="card horizontal hoverable hit">
                                             <div className="card-image">
-                                                <img alt="" width="118" height="118" src={salle.image}/>
+                                                <img alt="" width="118" height="118" src={salle.image1}/>
                                             </div>
                                             <div className="card-stacked">
                                                 <div>

@@ -23,7 +23,7 @@ class UserService{
                 //"Authorization": `Bearer ${localStorage.getItem('token')}`
             }
         }
-        let call = await fetch(`${baseUrl}/film/${id}`, init);
+        let call = await fetch(`${baseUrl}/users/${id}`, init);
         return call;
     }
 

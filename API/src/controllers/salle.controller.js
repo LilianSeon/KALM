@@ -1,7 +1,7 @@
 import Salle from "../models/Salle";
 import jwt from "jsonwebtoken";
 
-class UserController{
+class SalleController{
 
     /**
      * Create User into Database
@@ -18,14 +18,19 @@ class UserController{
             let salle = await Salle.create({
                 nom: req.body.nom,
                 description: req.body.description,
-                image: req.body.image,
+                image1: req.body.image1,
+                image2: req.body.image2,
+                image3: req.body.image3,
+                image4: req.body.image4,
+                image5: req.body.image5,
                 email: req.body.email,
                 latitude: req.body.latitude,
                 longitude: req.body.longitude,
                 type: req.body.type,
                 url: req.body.url,
                 ouverture: req.body.ouverture,
-                fermeture: req.body.fermeture
+                fermeture: req.body.fermeture,
+                note: (req.body.note) ? req.body.note : 0
             });
 
             body = {
@@ -101,11 +106,11 @@ class UserController{
             // .findOne({email: 'email@email.fr'})
             
             let id = req.params.id;
-            let user = await User.findById(id);
+            let salle = await Salle.findById(id);
 
             body = {
-                user, 
-                'message': 'Users details'
+                salle, 
+                'message': 'Salles details'
             };
         } catch (error) {
             status = 500;
@@ -124,7 +129,7 @@ class UserController{
             // .findById(id)
             // .findOne({email: 'email@email.fr'})
             
-            await User.remove({_id: req.params.id});
+            await Salle.remove({_id: req.params.id});
 
             body = {
                 'message': 'Users Deleted'
@@ -146,7 +151,7 @@ class UserController{
             // .findById(id)
             // .findOne({email: 'email@email.fr'})
 
-            let user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+            let user = await Salle.findByIdAndUpdate(req.params.id, req.body, {new: true});
 
             body = {
                 user,
@@ -166,7 +171,7 @@ class UserController{
         try {            
             
             //Check si l'utilisateur a le bon mdp et email
-            let user = await User.findOne({email: req.body.email});
+            let user = await Salle.findOne({email: req.body.email});
 
             if(user && user.password === req.body.password){
 
@@ -200,4 +205,4 @@ class UserController{
 }
 
 
-export default UserController;
+export default SalleController;

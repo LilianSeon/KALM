@@ -4,7 +4,7 @@ import Footer from '../component/Footer';
 import UserService from '../service/user.service';
 import SalleService from '../service/salle.service';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, TimePicker } from 'react-materialize';
+import { Tabs, Tab, TimePicker, CollapsibleItem, Collapsible, Icon } from 'react-materialize';
 import Materialize from "materialize-css";
 
 class Inscription extends Component{
@@ -27,7 +27,11 @@ class Inscription extends Component{
                 latitude: "",
                 longitude: "",
                 url: "",
-                image: "",
+                image1: "",
+                image2: "",
+                image3: "",
+                image4: "",
+                image5: "",
                 type: 0,
                 ouverture: "",
                 fermeture: ""
@@ -134,11 +138,47 @@ class Inscription extends Component{
         });
     }
 
-    getImageSalle(e){ // Récupère l'image de la salle pour le mettre dans le state
+    getImageSalle1(e){ // Récupère l'image de la salle pour le mettre dans le state
         this.setState({
             salle:{
                 ...this.state.salle,
-                image: e.target.value
+                image1: e.target.value
+            }
+        });
+    }
+
+    getImageSalle2(e){ // Récupère l'image de la salle pour le mettre dans le state
+        this.setState({
+            salle:{
+                ...this.state.salle,
+                image2: e.target.value
+            }
+        });
+    }
+
+    getImageSalle3(e){ // Récupère l'image de la salle pour le mettre dans le state
+        this.setState({
+            salle:{
+                ...this.state.salle,
+                image3: e.target.value
+            }
+        });
+    }
+
+    getImageSalle4(e){ // Récupère l'image de la salle pour le mettre dans le state
+        this.setState({
+            salle:{
+                ...this.state.salle,
+                image4: e.target.value
+            }
+        });
+    }
+
+    getImageSalle5(e){ // Récupère l'image de la salle pour le mettre dans le state
+        this.setState({
+            salle:{
+                ...this.state.salle,
+                image5: e.target.value
             }
         });
     }
@@ -163,7 +203,6 @@ class Inscription extends Component{
 
     async addUser(e){ // Envoie de la requête pour ajouter un utilisateur en base de donnée
         e.preventDefault();
-        console.log(this.state);
         let response = await UserService.create(this.state.user); // Ajoute un user
         if(response.ok){
             window.location.replace("/connexion");
@@ -307,11 +346,43 @@ class Inscription extends Component{
                         </div>
                     </div>
                     <div className="row">
-                        <div className="input-field col s10">
-                            <i className="material-icons prefix">image</i>
-                            <input id="imageSalle" type="text" className="validate" onChange={(e) => {this.getImageSalle(e)}}/>
-                            <label htmlFor="imageSalle">Image</label>
-                        </div>
+                    <div className="input-field col s10">
+                        <Collapsible accordion>
+                            <CollapsibleItem
+                                expanded={false}
+                                header="Images d'illustration"
+                                icon={<Icon>photo_camera</Icon>}
+                                node="div"
+                            >
+                                <div className="input-field">
+                                    <i className="material-icons prefix">image</i>
+                                    <input id="imageSalle1" type="text" className="validate" onChange={(e) => {this.getImageSalle1(e)}}/>
+                                    <label htmlFor="imageSalle1">Image 1</label>
+                                </div>
+                                <div className="input-field">
+                                    <i className="material-icons prefix">image</i>
+                                    <input id="imageSalle2" type="text" className="validate" onChange={(e) => {this.getImageSalle2(e)}}/>
+                                    <label htmlFor="imageSalle2">Image 2</label>
+                                </div>
+                                <div className="input-field">
+                                    <i className="material-icons prefix">image</i>
+                                    <input id="imageSalle3" type="text" className="validate" onChange={(e) => {this.getImageSalle3(e)}}/>
+                                    <label htmlFor="imageSalle3">Image 3</label>
+                                </div>
+                                <div className="input-field">
+                                    <i className="material-icons prefix">image</i>
+                                    <input id="imageSalle4" type="text" className="validate" onChange={(e) => {this.getImageSalle4(e)}}/>
+                                    <label htmlFor="imageSalle4">Image 4</label>
+                                </div>
+                                <div className="input-field">
+                                    <i className="material-icons prefix">image</i>
+                                    <input id="imageSalle5" type="text" className="validate" onChange={(e) => {this.getImageSalle5(e)}}/>
+                                    <label htmlFor="imageSalle5">Image 5</label>
+                                    <span className="helper-text">Type URL</span>
+                                </div>
+                            </CollapsibleItem>
+                        </Collapsible>
+                    </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s5">

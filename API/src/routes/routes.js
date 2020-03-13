@@ -3,7 +3,6 @@ import UserController from '../controllers/users.controller';
 import ArticleController from '../controllers/articles.controller';
 import CommentController from '../controllers/comments.controller'
 import SalleController from '../controllers/salle.controller'
-import Auth from './../config/auth';
 
 const router = Router();
 
@@ -59,6 +58,8 @@ router.put('/comments/:id', CommentController.update);
 router.post('/salle', SalleController.create);
 
 router.get('/salle', SalleController.list);
+
+router.get('/salle/:id', SalleController.details);
 
 router.get('/salle/:query', SalleController.searchMap);
 

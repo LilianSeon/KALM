@@ -11,9 +11,21 @@ const salleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image:{
+    image1:{
         type: String,
         required: true
+    },
+    image2:{
+        type: String,
+    },
+    image3:{
+        type: String,
+    },
+    image4:{
+        type: String,
+    },
+    image5:{
+        type: String,
     },
     email: {
         type: String,
@@ -44,6 +56,7 @@ const salleSchema = new mongoose.Schema({
     },
     note:{
         type: Number,
+        default: 0
     }
 });
 

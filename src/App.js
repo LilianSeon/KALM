@@ -6,6 +6,7 @@ import './App.css';
 import Inscription from './component/Inscription';
 import Home2 from './component/Home2';
 import SalleDetail from './component/SalleDetail';
+import MonProfil from './component/MonProfil';
 
 class App extends Component{
   render(){
@@ -16,6 +17,7 @@ class App extends Component{
         <Route exact path="/inscription" component={Inscription}/>
         <Route exact path="/accueil" component={Home2}/>
         <Route exact path="/salle-detail/:id" component={SalleDetail}/>
+        <Route exact path="/monProfil" component={MonProfil}/>
       </BrowserRouter>
     );
   }

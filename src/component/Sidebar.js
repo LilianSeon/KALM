@@ -32,24 +32,24 @@ class Sidebar extends Component{
                   >
                     <SideNavItem
                     user={{
-                        background: 'https://placeimg.com/640/480/tech',
+                        background: 'https://placeimg.com/640/480/nature/sepia',
                         email: JSON.parse(localStorage.email),
                         image: JSON.parse(localStorage.image),
                         name: JSON.parse(localStorage.prenom)+' '+JSON.parse(localStorage.nom)
                     }}
                     userView
                     />
-                    <SideNavItem
-                    href="#!icon"
-                    icon="map"
-                    >
-                    Trouver ma salle
-                    </SideNavItem>
+                    <Link to={'/accueil'}>
+                        <SideNavItem
+                        icon="map"
+                        >
+                        Trouver ma salle
+                        </SideNavItem>
+                    </Link>
                     <SideNavItem href="#!second" icon="gps_fixed">
                     Fixer mes objectifs
                     </SideNavItem>
                     <SideNavItem
-                    href="#!third"
                     icon="equalizer"
                     waves
                     >
@@ -64,13 +64,14 @@ class Sidebar extends Component{
                         </SideNavItem>
                     </Link>
                     <SideNavItem divider />
-                    <SideNavItem
-                    href="#!third"
-                    icon="person"
-                    waves
-                    >
-                    Mon profil
-                    </SideNavItem>
+                    <Link to={'/monProfil'}>
+                        <SideNavItem
+                        icon="person"
+                        waves
+                        >
+                        Mon profil
+                        </SideNavItem>
+                    </Link>
                     <Link to={'/'}>
                         <SideNavItem
                         icon="home"
