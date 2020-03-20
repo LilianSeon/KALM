@@ -4,6 +4,7 @@ import { Carousel } from 'react-materialize';
 import SalleService from '../service/salle.service';
 import CommentService from '../service/comment.service';
 import Materialize from "materialize-css";
+import StarRatings from 'react-star-ratings';
 
 class SalleDetail extends Component{
 
@@ -18,6 +19,15 @@ class SalleDetail extends Component{
             image5: '',
             newComment: '',
             comments: [],
+            inscription:{
+                genre: '',
+                nom: JSON.parse(localStorage.nom),
+                prenom: JSON.parse(localStorage.prenom),
+                portable: '',
+                naissance: '',
+                accepte: '',
+                email: JSON.parse(localStorage.email)
+            }
         };
       }
 
@@ -48,7 +58,10 @@ class SalleDetail extends Component{
             console.log(response.error);
         }
 
-        console.log(this.state)
+        console.log(this.state);
+
+        var elems = document.querySelectorAll('.modal');
+        Materialize.Modal.init(elems, {});
     }
 
     getNewComment(e){ // Update le state si le commentaire n'est pas trop long
@@ -92,6 +105,107 @@ class SalleDetail extends Component{
         }
     }
 
+    getMadame(e){ // Récupère le renge de l'utilisateur pour le mettre dans le state
+        this.setState({
+            inscription:{
+                ...this.state.inscription,
+                genre: e.currentTarget.value
+            }
+        });
+        console.log(e.target.value);
+    }
+
+    getMonsieur(e){ // Récupère le renge de l'utilisateur pour le mettre dans le state
+        this.setState({
+            inscription:{
+                ...this.state.inscription,
+                genre: e.currentTarget.value
+            }
+        });
+    }
+
+    getPrenom(e){ // Récupère l'e prenom de l'utilisateur pour le mettre dans le state
+        this.setState({
+            inscription:{
+                ...this.state.inscription,
+                prenom: e.target.value
+            }
+        });
+    }
+
+    getNom(e){ // Récupère le nom de l'utilisateur pour le mettre dans le state
+        this.setState({
+            inscription:{
+                ...this.state.inscription,
+                nom: e.target.value
+            }
+        });
+    }
+
+    getNaissance(e){ // Récupère la date de naissance de l'utilisateur pour le mettre dans le state
+        this.setState({
+            inscription:{
+                ...this.state.inscription,
+                naissance: e.target.value
+            }
+        });
+    }
+
+    getPortable(e){ // Récupère le noméro de protable de l'utilisateur pour le mettre dans le state
+        this.setState({
+            inscription:{
+                ...this.state.inscription,
+                portable: e.target.value
+            }
+        });
+    }
+
+    getAccepte(e){ // Récupère si l'utilisateur accepte  pour le mettre dans le state
+
+        if(e.target.checked){
+            this.setState({
+                inscription:{
+                    ...this.state.inscription,
+                    accepte: true
+                }
+            });
+        }else{
+            this.setState({
+                inscription:{
+                    ...this.state.inscription,
+                    accepte: false
+                }
+            });
+        }
+        
+        console.log(this.state.inscription);
+    }
+
+    async sendEmail(){
+
+        let body = {
+            genre: this.state.inscription.genre,
+            nom: this.state.inscription.nom,
+            prenom: this.state.inscription.prenom,
+            portable: this.state.inscription.portable,
+            naissance: this.state.inscription.naissance,
+            accepte: this.state.inscription.accepte,
+            email: this.state.inscription.email,
+            nomSalle: this.state.salle.nom,
+            emailSalle: this.state.salle.email
+        }
+
+        let response = await SalleService.Email(body);
+
+        if(response.ok){
+            console.log('OK SEND');
+            Materialize.toast({html: 'Pré-inscription envoyé !'});
+            this.componentDidMount();
+        }else{
+            console.log(response.error);
+        }
+    }
+
 
     render(){
         return(
@@ -126,7 +240,19 @@ class SalleDetail extends Component{
                     <li>{this.state.salle.url}</li>
                     <li>{this.state.salle.ouverture}</li>
                     <li>{this.state.salle.fermeture}</li>
+                    <li>type : {(this.state.salle.type) ? 'écolo' : 'classique'}</li>
+                    <StarRatings
+                        rating={this.state.salle.note}
+                        starRatedColor="#cddc39"
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="20px"
+                        starSpacing="4px"
+                    />
                 </ul>
+                <div className="row">
+                    <a className="waves-effect waves-light btn modal-trigger" href="#modal1">Pré-inscription</a>
+                </div>
                 <div className="row">
                     <h5>Espace commentaire</h5>
                 </div>
@@ -155,6 +281,59 @@ class SalleDetail extends Component{
                     }) : null
                 }
                 </ul>
+                </div>
+                <div id="modal1" className="modal modal-fixed-footer">
+                    <div className="modal-content">
+                        <h4>Module de pré-inscription</h4>
+                        <div className="row">
+                            <blockquote>{this.state.salle.nom}</blockquote>
+                        </div>
+                        <div className="row">
+                            <label>
+                                <input id="madame" name="gender" type="radio" className="with-gap" value="Madame" onChange={(e) => {this.getMadame(e)}} />
+                                <span htmlFor="madame">Madame</span>
+                            </label>
+                            <label style={{marginLeft: '10px'}}>
+                                <input id="monsieur" name="gender" type="radio" className="with-gap" value="Monsieur" onChange={(e) => {this.getMonsieur(e)}}/>
+                                <span htmlFor="monsieur">Monsieur</span>
+                            </label>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <input id="prenom" type="text" className="validate active" value={this.state.inscription.prenom} onChange={(e) => {this.getPrenom(e)}}/>
+                                <label htmlFor="prenom">Prénom</label>
+                            </div>
+                            <div className="input-field col s6">
+                                <input id="nom" type="text" className="validate active" value={this.state.inscription.nom} onChange={(e) => {this.getNom(e)}}/>
+                                <label htmlFor="nom">Nom</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <input id="email" type="email" className="validate active" value={this.state.inscription.email} onChange={(e) => {this.getEmail(e)}}/>
+                                <label htmlFor="email">Email</label>
+                            </div>
+                            <div className="input-field col s6">
+                                <input placeholder="jj / mm / aaaa" type="date" className="datepicker active" onChange={(e) => {this.getNaissance(e)}}/>
+                                <label>Date de naissance</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <input id="tel" type="text" className="validate" onChange={(e) => {this.getPortable(e)}}/>
+                                <label htmlFor="tel">Portable</label>
+                            </div>
+                        </div><br/>
+                        <div className="row">
+                            <label className="col s6">
+                                <input type="checkbox" onChange={(e) => {this.getAccepte(e)}} checked={this.state.inscription.accepte}/>
+                                <span>En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient utilisées pour permettre de me recontacter.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="modal-footer">
+                        <a href="#!" className="modal-close waves-effect waves-green btn-flat" onClick={() => {this.sendEmail()}}>Envoyer</a>
+                    </div>
                 </div>
             </div>
         )

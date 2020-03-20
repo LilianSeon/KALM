@@ -395,7 +395,7 @@ class Inscription extends Component{
                                     fromNow: 0,
                                     i18n: {
                                         cancel: 'Annuler',
-                                        clear: 'Clear',
+                                        clear: 'Effacer',
                                         done: 'Ok'
                                     },
                                     onCloseEnd: null,

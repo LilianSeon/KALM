@@ -1,5 +1,9 @@
 import Salle from "../models/Salle";
 import jwt from "jsonwebtoken";
+require('dotenv').config();
+var api_key = process.env.MAILGUN_API_KEY;
+var domain = 'sandbox0a4dff510fb3431989171bbeba06db1d.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 class SalleController{
 
@@ -43,6 +47,29 @@ class SalleController{
             body = {'message': error.message};
         }
         return res.status(status).json(body);
+    }
+
+    static async preinscriptionEmail(req, res){
+
+        let genre= req.body.genre;
+        let nom= req.body.nom;
+        let prenom= req.body.prenom;
+        let portable= req.body.portable;
+        let naissance= req.body.naissance;
+        let email= req.body.email;
+        let nomSalle= req.body.nomSalle;
+        let emailSalle= req.body.emailSalle;
+
+        var data = {
+            from: ''+prenom+' '+nom+' <'+email+'>',
+            to: 'eragnylilian@live.fr', // emailSalle
+            subject: 'Nouvelle pré-inscription à '+nomSalle+'',
+            html: "Bonjour,<br><br>"+genre+" "+nom+" "+prenom+" né le "+naissance+" souhaite s'inscrire à la salle de sport <b>"+nomSalle+"</b>.<br><br>Voici ses coordonnées :<ul><li>"+portable+"</li><li>"+email+"</li></ul><br>L'équipe KALM vous prie de bien prendre en compte ces informations avant l'arriver de "+genre+" "+nom+" "+prenom+" dans votre salle.<br><br>Merci,<br><br>Cordialement,<br><br> L'équipe KALM."
+          };
+           
+          mailgun.messages().send(data, function (error, body) {
+            console.log(body);
+          });
     }
 
 

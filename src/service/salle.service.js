@@ -52,6 +52,18 @@ class SalleService{
         return call;
     }
 
+    static async Email(body){
+        let init = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        }
+        let call = await fetch(`${baseUrl}/salle/email`, init);
+        return call;
+    }
+
     static async delete(id){
         let init = {
             method: "DELETE",

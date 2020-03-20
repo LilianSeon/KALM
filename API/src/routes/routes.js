@@ -63,6 +63,8 @@ router.get('/salle/:id', SalleController.details);
 
 router.get('/salle/:query', SalleController.searchMap);
 
+router.post('/salle/email', SalleController.preinscriptionEmail);
+
 
 
 export default router;
