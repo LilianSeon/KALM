@@ -84,7 +84,7 @@ class SalleService{
                 //"Authorization": `Bearer ${localStorage.getItem('token')}`
             }
         }
-        let call = await fetch(`${baseUrl}/salle/${query}`, init);
+        let call = await fetch(`${baseUrl}/salle/query/${query}`, init);
         return call;
     }
 

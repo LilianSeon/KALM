@@ -49,7 +49,7 @@ class Map extends Component{
             }else{
                 console.log(response.error);
             }
-            console.log(this.state);
+            console.log(this.props.search)
             
     }
 
@@ -64,7 +64,7 @@ class Map extends Component{
     }
 
     componentWillUpdate(){
-        console.log(this.props.search)
+        
     }
 
     
@@ -82,7 +82,7 @@ class Map extends Component{
         return(
             <div>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'AIzaSyC1DDVW3qtV4y7dZm2iKN2ecQPfw7wS0go'}}
+                    bootstrapURLKeys={{ key: 'AIzaSyCRI09Ei1R_9dstSzmQNgzaHNakc7UjwMI'}}
                     center={this.state.center}
                     defaultZoom={this.state.zoom}
                     style={{ height: '100vh', width: '100%'}}

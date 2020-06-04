@@ -62,7 +62,18 @@ class Home2 extends Component{
             }
         }
 
-        let response = await SalleService.searchMap(document.getElementById('autocomplete-input').value); // Avoir la liste des salles en fonction de la recherche
+        if(document.getElementById('autocomplete-input').value !== ""){
+            let response = await SalleService.searchMap(document.getElementById('autocomplete-input').value); // Avoir la liste des salles en fonction de la recherche
+                if(response.ok){
+                    let data = await response.json();
+                    this.setState({
+                        sallesBySearching: data.salles,
+                    });
+                }else{
+                    console.log(response);
+                }
+        }else{
+            let response = await SalleService.list(); // Avoir la liste des salles
             if(response.ok){
                 let data = await response.json();
                 this.setState({
@@ -71,6 +82,7 @@ class Home2 extends Component{
             }else{
                 console.log(response.error);
             }
+        }
     }
 
     render(){

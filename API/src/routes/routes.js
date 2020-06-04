@@ -61,7 +61,7 @@ router.get('/salle', SalleController.list);
 
 router.get('/salle/:id', SalleController.details);
 
-router.get('/salle/:query', SalleController.searchMap);
+router.get('/salle/query/:query', SalleController.searchMap);
 
 router.post('/salle/email', SalleController.preinscriptionEmail);
 
