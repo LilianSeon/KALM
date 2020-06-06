@@ -3,6 +3,7 @@ import UserController from '../controllers/users.controller';
 import ArticleController from '../controllers/articles.controller';
 import CommentController from '../controllers/comments.controller'
 import SalleController from '../controllers/salle.controller'
+import ObjectifController from '../controllers/objectifs.controller';
 
 const router = Router();
 
@@ -64,6 +65,17 @@ router.get('/salle/:id', SalleController.details);
 router.get('/salle/query/:query', SalleController.searchMap);
 
 router.post('/salle/email', SalleController.preinscriptionEmail);
+
+// Objectifs
+
+
+router.post('/objectif', ObjectifController.create);
+
+router.get('/objectif/:id', ObjectifController.details);
+
+router.delete('/objectif/:id', ObjectifController.delete);
+
+router.put('/objectif/:id', ObjectifController.update);
 
 
 

@@ -7,6 +7,8 @@ import Inscription from './component/Inscription';
 import Home2 from './component/Home2';
 import SalleDetail from './component/SalleDetail';
 import MonProfil from './component/MonProfil';
+import Objectif from './component/Objectif';
+import Recettes from './component/Recettes';
 
 class App extends Component{
   render(){
@@ -16,6 +18,8 @@ class App extends Component{
         <Route exact path="/connexion" component={Connexion}/>
         <Route exact path="/inscription" component={Inscription}/>
         <Route exact path="/accueil" component={Home2}/>
+        <Route exact path="/objectif" component={Objectif}/>
+        <Route exact path="/recette" component={Recettes}/>
         <Route exact path="/salle-detail/:id" component={SalleDetail}/>
         <Route exact path="/monProfil" component={MonProfil}/>
       </BrowserRouter>

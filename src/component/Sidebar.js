@@ -46,7 +46,7 @@ class Sidebar extends Component{
                         Trouver ma salle
                         </SideNavItem>
                     </Link>
-                    <SideNavItem href="#!second" icon="gps_fixed">
+                    <SideNavItem href="/objectif" icon="gps_fixed">
                     Fixer mes objectifs
                     </SideNavItem>
                     <SideNavItem
@@ -55,7 +55,7 @@ class Sidebar extends Component{
                     >
                     Mon évolution
                     </SideNavItem>
-                    <Link to={'/'}>
+                    <Link to={'/recette'}>
                         <SideNavItem
                         icon="local_dining"
                         waves

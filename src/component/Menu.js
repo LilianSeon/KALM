@@ -29,7 +29,8 @@ class Menu extends Component{
                     <Link id="logo-container" to={'/'} className="brand-logo">KALM</Link>
                     <ul className="right hide-on-med-and-down">
                         <li><Link to={'/accueil'}>Trouver ma salle</Link></li>
-                        <li><Link to={'/'}>Mes objectifs</Link></li>
+                        <li><Link to={'/objectif'}>Mes objectifs</Link></li>
+                        <li><Link to={'/recette'}>Mes recette</Link></li>
                         <li><Link to={'/'}>Mon évolution</Link></li>
                         <li><Link to={'/monProfil'}>Mon Profil</Link></li>
                         <li><Link to={'/inscription'}>Inscription</Link></li>
