@@ -55,7 +55,7 @@ class Objectif extends Component{
         return(
             <div>
                 <Sidebar/>
-                <div class="container">
+                <div class="container sidebar-width">
                     <div class="row">
                             <Col
                                 m={4}

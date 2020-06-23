@@ -298,7 +298,7 @@ class Inscription extends Component{
                     responsiveThreshold: Infinity,
                     swipeable: false
                     }}
-                    title="Un salle de sport"
+                    title="Une salle de sport"
                 >
                  <br/>
                 <div className="row m3">

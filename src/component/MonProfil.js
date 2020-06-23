@@ -29,7 +29,7 @@ class MonProfil extends Component{
         return(
             <div>
                 <Sidebar/>
-                <div className="container">
+                <div className="container sidebar-width">
                     <ul>
                         <li>{this.state.user.prenom}</li>
                         <li>{this.state.user.nom}</li>

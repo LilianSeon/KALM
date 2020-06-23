@@ -24,3 +24,7 @@
     max-height: 200px;
     width: 399px;
 }
+.sidebar-width {
+    width: 100%;
+    margin-left: 300px;
+}

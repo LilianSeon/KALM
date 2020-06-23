@@ -211,7 +211,7 @@ class SalleDetail extends Component{
         return(
             <div>
                 <Sidebar/>
-                <div className="container">
+                <div className="container sidebar-width">
                 <Carousel
                 images={[
                     (this.state.image1) ? this.state.image1 : "",
