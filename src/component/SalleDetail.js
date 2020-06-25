@@ -5,6 +5,7 @@ import SalleService from '../service/salle.service';
 import CommentService from '../service/comment.service';
 import Materialize from "materialize-css";
 import StarRatings from 'react-star-ratings';
+import '../css/SalleDetail.css';
 
 class SalleDetail extends Component{
 
@@ -233,24 +234,15 @@ class SalleDetail extends Component{
                     shift: 0
                 }}
                 />
-                <ul>
-                    <li>{this.state.salle.nom}</li>
-                    <li>{this.state.salle.description}</li>
-                    <li>{this.state.salle.email}</li>
-                    <li>{this.state.salle.url}</li>
-                    <li>{this.state.salle.ouverture}</li>
-                    <li>{this.state.salle.fermeture}</li>
-                    <li>type : {(this.state.salle.type) ? 'écolo' : 'classique'}</li>
-                    <StarRatings
-                        rating={this.state.salle.note}
-                        starRatedColor="#cddc39"
-                        numberOfStars={5}
-                        name='rating'
-                        starDimension="20px"
-                        starSpacing="4px"
-                    />
-                </ul>
-                <div className="row">
+                <div className="salle-detail">
+                    <div className="salle-detail-title">{this.state.salle.nom}</div>
+                    <div className="salle-detail-description">{this.state.salle.description}</div>
+                    <div className="salle-detail-email"><i class="small material-icons brown-text">email</i>Contact: {this.state.salle.email}</div>
+                    <a className="salle-detail-url" target="_blank" href={this.state.salle.url}>lien du site web</a>
+                    <div className="salle-detail-ouverture">Ouverture: {this.state.salle.ouverture} Fermeture: {this.state.salle.fermeture}</div>
+                    <div className="salle-detail-type">Salle écologique : {(this.state.salle.type) ? 'Oui' : 'Non'}</div>
+                </div>
+                <div className="row salle-detail-preinscription">
                     <a className="waves-effect waves-light btn modal-trigger" href="#modal1">Pré-inscription</a>
                 </div>
                 <div className="row">

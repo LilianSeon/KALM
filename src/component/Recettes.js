@@ -33,7 +33,7 @@ class Recette extends Component{
         return(
             <div>
                 <Sidebar/>
-                <div className="container">
+                <div className="container mes-recettes">
                     {
                      this.state.objectifs ?
                     this.state.objectifs.map((comment, c = 0) => {

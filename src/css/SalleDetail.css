@@ -1,0 +1,22 @@
+.salle-detail {
+    width: 100%;
+    text-align: center;
+}
+.salle-detail-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 21px;
+}
+.salle-detail-description {
+    text-align: center;
+    font-size: 15px;
+    color: grey;
+}
+.salle-detail-email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.salle-detail-preinscription {
+    text-align: center;
+}

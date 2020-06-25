@@ -1,3 +1,6 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 nav ul a,
  nav .brand-logo {
    color: #444;
@@ -55,4 +58,6 @@ nav ul a,
   position: absolute;
   right: 30%;
  }
- 
+ .mes-recettes {
+   margin: 10px 10px 10px 310px;
+ }

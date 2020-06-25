@@ -21,6 +21,18 @@ class Home extends Component{
         Materialize.Parallax.init(elems, {});
     }
 
+
+    disconnect(){
+        localStorage.removeItem('idUser');
+        localStorage.removeItem('prenom');
+        localStorage.removeItem('email');
+        localStorage.removeItem('nom');
+        localStorage.removeItem('image');
+        localStorage.removeItem('user_role');
+        localStorage.removeItem('isAuth');
+        localStorage.removeItem('toast');
+    }
+
     render(){
         return(
             <div>
@@ -28,12 +40,17 @@ class Home extends Component{
                 <div className="section no-pad-bot transparent">
                     <div className="container">
                         <br/><br/>
-                            <h1 className="header center teal-text text-lighten-2">Parallax Template</h1>
+                            <h1 className="header center teal-text text-lighten-2">Bienvenue</h1>
                         <div className="row center">
-                            <h5 className="header col s12 light white-text">A modern responsive front-end framework based on Material Design</h5>
+                            <h5 className="header col s12 light white-text">Voici votre nouveau site web pour suivre vos progressions et bien plus encore...</h5>
                         </div>
                         <div className="row center">
-                            <Link to={'/connexion'} id="download-button" className="btn-large waves-effect waves-light teal lighten-1">Connexion</Link>
+                        {
+                            (localStorage.isAuth === "true") ?                        
+                            <Link to={'/'} className="btn-large waves-effect waves-light teal lighten-1" onClick={() => {this.disconnect()}}>Déconnexion</Link>
+                            :
+                            <Link to={'/connexion'} id="download-button" className="btn-large waves-effect waves-light teal lighten-1" >Connexion</Link>
+                        }
                         </div>
                         <br/><br/>
                     </div>
